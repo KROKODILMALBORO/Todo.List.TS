@@ -36,11 +36,19 @@ const CreatePlan: FC<IProps> = (props) => {
         setName('')
     }
 
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            postPlan()
+        }
+    }
+
     return (
         <div>
             <input
                 value={name}
+                placeholder='Название нового дела'
                 onChange={(e) => setName(e.target.value)}
+                onKeyPress={handleKeyPress}
             />
             <button
                 onClick={postPlan}
