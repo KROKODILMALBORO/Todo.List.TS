@@ -1,9 +1,10 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 import {IPlan} from './types'
+import {defaultPlans} from './functions'
 
 export const usePlans = () => {
-    const [plans, setPlans] = useState<IPlan[]>([])
+    const [plans, setPlans] = useState<IPlan[]>(defaultPlans)
 
     const postPlan = (newPlan: IPlan) => {
         const newPlans = [...plans, newPlan]
@@ -22,6 +23,25 @@ export const usePlans = () => {
         newPlans[index] = newPlan
         setPlans(newPlans)
     }
+
+    const clearPlans = () => {
+        if (!plans.length) {
+            return
+        }
+
+        const uncompletedPlans = plans.filter((plan) => !plan.isCompleted)
+
+        if (!uncompletedPlans.length) {
+            localStorage.setItem('plans', JSON.stringify([]))
+            setPlans([])
+        }
+
+        localStorage.setItem('plans', JSON.stringify(plans))
+    }
+
+    useEffect(() => {
+        clearPlans()
+    }, [plans])
 
     return {
         plans,
