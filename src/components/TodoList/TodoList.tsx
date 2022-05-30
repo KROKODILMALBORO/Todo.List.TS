@@ -19,13 +19,21 @@ const TodoList = () => {
                 postPlan={postPlan}
             />
             {
+                plans.length !== 0 ?
                 plans.map((plan, index) =>
                     <Plan
                         key={plan.name}
                         plan={plan}
                         pathPlan={() => pathPlan(index)}
                     />
-                )
+                ) :
+                <div className='d-flex justify-content-center'>
+                    <div className='bg-light rounded shadow-sm p-1 px-3'>
+                        <span className='fs-4 text-secondary'>
+                            Cписок дел сейчас пуст
+                        </span>
+                    </div>
+                </div>
             }
         </div>
     )

@@ -5,7 +5,7 @@ import TodoList from './components/TodoList'
 
 const App = () => {
     return (
-        <div>
+        <div className='min-vh-100 bg-secondary bg-opacity-25 text-dark'>
             <Header />
             <TodoList />
         </div>
