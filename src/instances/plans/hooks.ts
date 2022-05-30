@@ -11,8 +11,21 @@ export const usePlans = () => {
         setPlans(newPlans)
     }
 
+    const pathPlan = (index: number) => {
+        const plan = plans[index]
+        const newPlan = {
+            ...plan,
+            isCompleted: !plan.isCompleted
+        }
+        const newPlans = [...plans]
+
+        newPlans[index] = newPlan
+        setPlans(newPlans)
+    }
+
     return {
         plans,
         postPlan,
+        pathPlan,
     }
 }

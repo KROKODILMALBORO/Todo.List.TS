@@ -9,16 +9,18 @@ const TodoList = () => {
     const {
         plans,
         postPlan,
+        pathPlan,
     } = usePlans()
 
     return (
         <div>
             <CreatePlan postPlan={postPlan}/>
             {
-                plans.map((plan) =>
+                plans.map((plan, index) =>
                     <Plan
                         key={plan.name}
                         plan={plan}
+                        pathPlan={() => pathPlan(index)}
                     />
                 )
             }

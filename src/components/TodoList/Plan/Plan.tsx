@@ -6,6 +6,12 @@ const Plan: FC<IProps> = (props) => {
     return (
         <div>
             {props.plan.name}
+            <input
+                type='checkbox'
+                checked={props.plan.isCompleted}
+                onChange={props.pathPlan}
+                onClick={props.pathPlan}
+            />
         </div>
     )
 }

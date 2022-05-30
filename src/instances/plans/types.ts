@@ -1,4 +1,4 @@
 export interface IPlan {
     name: string,
-    isCompleted: false,
+    isCompleted: boolean,
 }
