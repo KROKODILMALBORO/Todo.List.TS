@@ -14,7 +14,10 @@ const TodoList = () => {
 
     return (
         <div>
-            <CreatePlan postPlan={postPlan}/>
+            <CreatePlan
+                plans={plans}
+                postPlan={postPlan}
+            />
             {
                 plans.map((plan, index) =>
                     <Plan
