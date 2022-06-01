@@ -1,10 +1,10 @@
 import {useState, useEffect} from 'react'
 
 import {IPlan} from './types'
-import {defaultPlans} from './functions'
+import {getDefaultPlans} from './functions'
 
 export const usePlans = () => {
-    const [plans, setPlans] = useState<IPlan[]>(defaultPlans)
+    const [plans, setPlans] = useState<IPlan[]>(getDefaultPlans)
 
     const postPlan = (newPlan: IPlan) => {
         const newPlans = [...plans, newPlan]
