@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 
 import {IPlan} from './types'
 import {getDefaultPlans} from './functions'
+import {LS_PLANS} from './constans'
 
 export const usePlans = () => {
     const [plans, setPlans] = useState<IPlan[]>(getDefaultPlans)
@@ -12,7 +13,7 @@ export const usePlans = () => {
         setPlans(newPlans)
     }
 
-    const pathPlan = (index: number) => {
+    const patchPlan = (index: number) => {
         const plan = plans[index]
         const newPlan = {
             ...plan,
@@ -24,7 +25,7 @@ export const usePlans = () => {
         setPlans(newPlans)
     }
 
-    const clearPlans = () => {
+    useEffect(() => {
         if (!plans.length) {
             return
         }
@@ -32,20 +33,18 @@ export const usePlans = () => {
         const uncompletedPlans = plans.filter((plan) => !plan.isCompleted)
 
         if (!uncompletedPlans.length) {
-            localStorage.setItem('plans', JSON.stringify([]))
+            localStorage.setItem(LS_PLANS, JSON.stringify([]))
             setPlans([])
+
+            return
         }
 
-        localStorage.setItem('plans', JSON.stringify(plans))
-    }
-
-    useEffect(() => {
-        clearPlans()
+        localStorage.setItem(LS_PLANS, JSON.stringify(plans))
     }, [plans])
 
     return {
         plans,
         postPlan,
-        pathPlan,
+        patchPlan,
     }
 }

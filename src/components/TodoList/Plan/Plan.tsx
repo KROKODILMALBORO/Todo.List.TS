@@ -7,7 +7,7 @@ const Plan: FC<IProps> = (props) => {
         <div className='d-flex flex-row justify-content-center mb-3'>
             <div
                 className='d-flex justify-content-between list-group-item list-group-item-action rounded shadow-sm w-50'
-                onClick={props.pathPlan}
+                onClick={props.patchPlan}
                 role='button'
             >
                 <span className='fs-4'>
@@ -17,8 +17,8 @@ const Plan: FC<IProps> = (props) => {
                     className='form-check-input p-3 mb-1'
                     type='checkbox'
                     checked={props.plan.isCompleted}
-                    onChange={props.pathPlan}
-                    onClick={props.pathPlan}
+                    onChange={props.patchPlan}
+                    onClick={props.patchPlan}
                 />
             </div>
         </div>

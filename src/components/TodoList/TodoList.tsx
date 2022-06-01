@@ -9,7 +9,7 @@ const TodoList = () => {
     const {
         plans,
         postPlan,
-        pathPlan,
+        patchPlan,
     } = usePlans()
 
     return (
@@ -24,7 +24,7 @@ const TodoList = () => {
                     <Plan
                         key={plan.name}
                         plan={plan}
-                        pathPlan={() => pathPlan(index)}
+                        patchPlan={() => patchPlan(index)}
                     />
                 ) :
                 <div className='d-flex justify-content-center'>

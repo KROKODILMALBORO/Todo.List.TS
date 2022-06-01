@@ -18,11 +18,11 @@ const CreatePlan: FC<IProps> = (props) => {
             return
         }
 
-        const identicalList = props.plans.find((plan) =>
+        const identicalPlan = props.plans.find((plan) =>
             plan.name === name
         )
 
-        if (identicalList) {
+        if (identicalPlan) {
             alert('Такое дело уже есть!')
 
             return
